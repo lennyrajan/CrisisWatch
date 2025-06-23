@@ -2,7 +2,6 @@
 
 const fs = require("fs");
 const path = require("path");
-const fetch = require("node-fetch");
 
 // 🔑 Replace with your actual API keys (or use GitHub Secrets)
 const ALPHA_VANTAGE_KEY = process.env.ALPHA_VANTAGE_KEY || "YOUR_ALPHA_KEY";
