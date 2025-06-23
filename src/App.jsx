@@ -7,6 +7,16 @@ export default function App() {
   const [status, setStatus] = useState(null);
   const [timeline, setTimeline] = useState([]);
   const [explanation, setExplanation] = useState("");
+  const [time, setTime] = useState(new Date());
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem("darkMode");
+    return saved ? JSON.parse(saved) : true;
+  });
+
+  useEffect(() => {
+    const timer = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     fetch("/data/status.json")
@@ -25,14 +35,36 @@ export default function App() {
       .catch(() => setExplanation(""));
   }, []);
 
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
+  }, [darkMode]);
+
   return (
-    <div style={{ maxWidth: 800, margin: "auto", padding: 20, fontFamily: "Arial, sans-serif" }}>
-      <h1>CrisisWatch</h1>
+    <div className="max-w-xl mx-auto p-5 font-sans bg-white dark:bg-black dark:text-white min-h-screen transition-colors duration-300">
+      <div className="flex justify-between items-center mb-6">
+        <div className="font-mono text-sm">{time.toLocaleTimeString()}</div>
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          className="px-3 py-1 border rounded border-gray-600 dark:border-gray-300"
+          aria-label="Toggle Dark Mode"
+        >
+          {darkMode ? "Light Mode" : "Dark Mode"}
+        </button>
+      </div>
+
+      <h1 className="text-3xl font-bold mb-6">CrisisWatch</h1>
+
       <Status status={status} />
       <Timeline events={timeline} />
       <Explanation markdown={explanation} />
-      <footer style={{ marginTop: 40, fontSize: 12, color: "#666", textAlign: "center" }}>
-        &copy; 2025 CrisisWatch
+
+      <footer className="mt-12 text-center text-xs text-gray-500 dark:text-gray-400">
+        Made with <span role="img" aria-label="coffee">☕️</span> by Lenny Rajan
       </footer>
     </div>
   );
