@@ -1,9 +1,9 @@
 name: Update CrisisWatch Data
 on:
-  schedule:
-    - cron: "*/10 * * * *"
-  workflow_dispatch:
-jobs:
+ schedule:
+   - cron: "*/10 * * * *"
+    workflow_dispatch:
+    jobs:
   update:
     runs-on: ubuntu-latest
     steps:
