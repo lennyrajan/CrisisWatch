@@ -1,1 +1,17 @@
-
+[
+  {
+    "date": "2025-06-18T15:30:00Z",
+    "title": "Iran launches missile attack on U.S. base in Iraq",
+    "description": "Iranian forces fired multiple ballistic missiles targeting a U.S. military base in Iraq, causing casualties and damage."
+  },
+  {
+    "date": "2025-06-19T10:00:00Z",
+    "title": "U.S. retaliates with airstrikes on Tehran command centers",
+    "description": "The United States launched precision airstrikes targeting Iranian military command centers in Tehran."
+  },
+  {
+    "date": "2025-06-20T08:00:00Z",
+    "title": "Oil prices surge above $90 per barrel",
+    "description": "Global oil prices spike due to escalating tensions in the Middle East, impacting global markets."
+  }
+]
