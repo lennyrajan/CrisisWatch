@@ -10,26 +10,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Run data fetch script
-      run: node scripts/updateStatus.js
+      - name: Run data fetch script
+        run: node scripts/updateStatus.js
 
-    - name: Commit and push changes
-      run: |
-        git config user.name "CrisisWatch Bot"
-        git config user.email "bot@crisiswatch"
-        git add data/status.json
-        git commit -m "🔄 Auto-update status.json"
-        git push
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit and push changes
+        run: |
+          git config user.name "CrisisWatch Bot"
+          git config user.email "bot@crisiswatch"
+          git add data/status.json
+          git commit -m "🔄 Auto-update status.json"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
