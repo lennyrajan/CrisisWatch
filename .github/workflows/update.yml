@@ -1,5 +1,4 @@
 name: Update CrisisWatch Data
-
 on:
   schedule:
     - cron: "*/10 * * * *"
