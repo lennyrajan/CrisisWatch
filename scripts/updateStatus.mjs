@@ -1,9 +1,14 @@
-// scripts/updateStatus.js
+// scripts/updateStatus.mjs
 
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
-// 🔑 Replace with your actual API keys (or use GitHub Secrets)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// 🔑 Use GitHub secrets or fallback placeholders
 const ALPHA_VANTAGE_KEY = process.env.ALPHA_VANTAGE_KEY || "YOUR_ALPHA_KEY";
 const NEWS_API_KEY = process.env.NEWS_API_KEY || "YOUR_NEWSAPI_KEY";
 
@@ -42,7 +47,7 @@ async function updateStatusFile() {
   const output = {
     lastUpdated: new Date().toISOString(),
     brentPrice: brentPrice,
-    alertLevel: "Tense", // You can automate this later based on rules
+    alertLevel: "Tense", // Can automate later
     topHeadlines: headlines,
   };
 
